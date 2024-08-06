@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        header {
+            width: 100%;
+            background-color: #4CAF50;
+            padding: 10px 0;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="static/logo.png" alt="Logo" class="logo">
+        <h1>Software Project Management</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('show_employees') }}">Manage Employees</a>
+        <a href="{{ url_for('show_tasks') }}">Manage Tasks</a>
+    </nav>
+</body>
+</html>

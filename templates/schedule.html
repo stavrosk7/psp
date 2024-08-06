@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Task Assignments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+        table {
+            margin: 20px 0;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        .info {
+            margin: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Assignments</h1>
+    <div class="info">
+        <p>Project Duration: {{ project_duration }} days</p>
+        <p>Total Cost: ${{ total_cost }}</p>
+    </div>
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Assigned Employee</th>
+        </tr>
+        {% for task, employee in assignments.items() %}
+        <tr>
+            <td>{{ task }}</td>
+            <td>{{ employee }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Gantt Chart</h2>
+    <img src="{{ url_for('gantt_chart') }}" alt="Gantt Chart">
+</body>
+</html>

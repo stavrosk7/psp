@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .employee-list {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        .employee-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .employee-list li:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .employee-actions {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employees</h1>
+    <a href="{{ url_for('new_employee') }}">Add New Employee</a>
+    <ul class="employee-list">
+        {% for employee in employees %}
+            <li>
+                {{ employee.name }} - {{ employee.position }} - ${{ employee.salary_per_hour }} per hour
+                <div class="employee-actions">
+                    <a href="{{ url_for('edit_employee', id=employee.id) }}">Edit</a>
+                    <form action="{{ url_for('delete_employee', id=employee.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
